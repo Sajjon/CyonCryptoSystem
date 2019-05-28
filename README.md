@@ -7,8 +7,17 @@ For a given group `Sᵣ`, where `ᵣ` is the max integer, the *order* (number of
 The private key is an element in the group `Sᵣ`, i.e. a permutation. To create this integer we could define
 
 ```math
-r is the max integer of S_r
+r is the max integer of Sᵣ
 GenBits(x): safely generates a bit array of length x
-ScalarInSet(i, S): returns scalar at index i, in the Sᵣ = { 1, ..., ᵣ}
-KeyGen(): m := GenBits(r), m.forEach { if $0 == 0 { include } }
+ScalarInSet(i, Sᵣ): returns scalar at index i, in the Sᵣ = { 1, ..., ᵣ}
+KeyGen(): 
+    m := GenBits(r)
+    numbers = m.enumerated().compactMap { index, bit in 
+        if bit == 1 { 
+            return ScalarInSet(index, Sᵣ) 
+        } else { 
+            return nil 
+        }  
+    }
+    privateKey = numbers.randomOrder() 
 ```
