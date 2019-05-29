@@ -8,8 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		482BAF12229D9BAA0092AB2F /* CyonCryptoSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 482BAF08229D9BA90092AB2F /* CyonCryptoSystem.framework */; };
-		482BAF17229D9BAA0092AB2F /* FooBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482BAF16229D9BAA0092AB2F /* FooBarTests.swift */; };
+		482BAF17229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */; };
 		482BAF19229D9BAA0092AB2F /* CyonCryptoSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 482BAF0B229D9BA90092AB2F /* CyonCryptoSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FB229E673A00FCE4D3 /* Group.swift */; };
+		E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */; };
+		E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */; };
+		E68BD804229E89C000FCE4D3 /* FiniteCyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD803229E89C000FCE4D3 /* FiniteCyclicGroup.swift */; };
+		E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD805229E89D300FCE4D3 /* ModularGroup.swift */; };
+		E68BD80A229E8A0200FCE4D3 /* Integers64ModN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD809229E8A0200FCE4D3 /* Integers64ModN.swift */; };
+		E68BD80D229E8B2900FCE4D3 /* SomeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD80C229E8B2900FCE4D3 /* SomeGroup.swift */; };
+		E68BD80F229E8B9C00FCE4D3 /* AnyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD80E229E8B9C00FCE4D3 /* AnyGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +35,16 @@
 		482BAF0B229D9BA90092AB2F /* CyonCryptoSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CyonCryptoSystem.h; sourceTree = "<group>"; };
 		482BAF0C229D9BA90092AB2F /* CyonCryptoSystem-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CyonCryptoSystem-Info.plist"; sourceTree = "<group>"; };
 		482BAF11229D9BAA0092AB2F /* CyonCryptoSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CyonCryptoSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		482BAF16229D9BAA0092AB2F /* FooBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooBarTests.swift; sourceTree = "<group>"; };
+		482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteCyclicGroupOfIntegersModNTests.swift; sourceTree = "<group>"; };
 		482BAF18229D9BAA0092AB2F /* CyonCryptoSystem-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CyonCryptoSystem-Tests-Info.plist"; sourceTree = "<group>"; };
+		E68BD7FB229E673A00FCE4D3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteGroup.swift; sourceTree = "<group>"; };
+		E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclicGroup.swift; sourceTree = "<group>"; };
+		E68BD803229E89C000FCE4D3 /* FiniteCyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteCyclicGroup.swift; sourceTree = "<group>"; };
+		E68BD805229E89D300FCE4D3 /* ModularGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModularGroup.swift; sourceTree = "<group>"; };
+		E68BD809229E8A0200FCE4D3 /* Integers64ModN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integers64ModN.swift; sourceTree = "<group>"; };
+		E68BD80C229E8B2900FCE4D3 /* SomeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeGroup.swift; sourceTree = "<group>"; };
+		E68BD80E229E8B9C00FCE4D3 /* AnyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +87,7 @@
 		482BAF0A229D9BA90092AB2F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				E68BD7FA229E672600FCE4D3 /* Code */,
 				482BAF22229D9BBF0092AB2F /* SupportingFiles */,
 			);
 			path = Source;
@@ -96,10 +113,65 @@
 		482BAF23229D9BCA0092AB2F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				482BAF16229D9BAA0092AB2F /* FooBarTests.swift */,
+				482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */,
 				482BAF18229D9BAA0092AB2F /* CyonCryptoSystem-Tests-Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E68BD7FA229E672600FCE4D3 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				E68BD7FE229E898400FCE4D3 /* Group */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		E68BD7FD229E897600FCE4D3 /* GroupTypes */ = {
+			isa = PBXGroup;
+			children = (
+				E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */,
+				E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */,
+				E68BD803229E89C000FCE4D3 /* FiniteCyclicGroup.swift */,
+				E68BD805229E89D300FCE4D3 /* ModularGroup.swift */,
+			);
+			path = GroupTypes;
+			sourceTree = "<group>";
+		};
+		E68BD7FE229E898400FCE4D3 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				E68BD80B229E8B1F00FCE4D3 /* Container */,
+				E68BD807229E89EB00FCE4D3 /* SpecificGroups */,
+				E68BD7FD229E897600FCE4D3 /* GroupTypes */,
+				E68BD7FB229E673A00FCE4D3 /* Group.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		E68BD807229E89EB00FCE4D3 /* SpecificGroups */ = {
+			isa = PBXGroup;
+			children = (
+				E68BD808229E89F400FCE4D3 /* IntegersModN */,
+			);
+			path = SpecificGroups;
+			sourceTree = "<group>";
+		};
+		E68BD808229E89F400FCE4D3 /* IntegersModN */ = {
+			isa = PBXGroup;
+			children = (
+				E68BD809229E8A0200FCE4D3 /* Integers64ModN.swift */,
+			);
+			path = IntegersModN;
+			sourceTree = "<group>";
+		};
+		E68BD80B229E8B1F00FCE4D3 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				E68BD80C229E8B2900FCE4D3 /* SomeGroup.swift */,
+				E68BD80E229E8B9C00FCE4D3 /* AnyGroup.swift */,
+			);
+			path = Container;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +236,11 @@
 				TargetAttributes = {
 					482BAF07229D9BA90092AB2F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					482BAF10229D9BAA0092AB2F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -176,6 +250,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 482BAEFE229D9BA90092AB2F;
 			productRefGroup = 482BAF09229D9BA90092AB2F /* Products */;
@@ -210,6 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E68BD80D229E8B2900FCE4D3 /* SomeGroup.swift in Sources */,
+				E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */,
+				E68BD804229E89C000FCE4D3 /* FiniteCyclicGroup.swift in Sources */,
+				E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */,
+				E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */,
+				E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */,
+				E68BD80F229E8B9C00FCE4D3 /* AnyGroup.swift in Sources */,
+				E68BD80A229E8A0200FCE4D3 /* Integers64ModN.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482BAF17229D9BAA0092AB2F /* FooBarTests.swift in Sources */,
+				482BAF17229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +440,7 @@
 		482BAF1D229D9BAA0092AB2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -375,7 +459,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -383,6 +468,7 @@
 		482BAF1E229D9BAA0092AB2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -401,7 +487,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -409,6 +495,7 @@
 		482BAF20229D9BAA0092AB2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/SupportingFiles/CyonCryptoSystem-Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -418,7 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cyon.alex.CyonCryptoSystemTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -426,6 +513,7 @@
 		482BAF21229D9BAA0092AB2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Tests/SupportingFiles/CyonCryptoSystem-Tests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -435,7 +523,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cyon.alex.CyonCryptoSystemTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
