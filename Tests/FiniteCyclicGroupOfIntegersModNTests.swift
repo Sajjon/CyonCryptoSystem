@@ -21,6 +21,10 @@ class FiniteCyclicGroupOfIntegersModNTests: XCTestCase {
             XCTAssertEqual($0.identity, 0)
         }
     }
+
+    func testSymmetricGroup() {
+        
+    }
     
     func testInverseOfZ3() {
         XCTAssertEqual(z3.inverse(of: 1), 2)

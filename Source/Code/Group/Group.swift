@@ -31,7 +31,6 @@ public protocol Group {
     /// - Returns: returns `true` iff the value is an element in the group
     func isElementInGroup(_ value: Element) -> Bool
     
-    
     /// The group operation to be performed between two elements in the group, returning
     /// an element which is also in the group.
     ///

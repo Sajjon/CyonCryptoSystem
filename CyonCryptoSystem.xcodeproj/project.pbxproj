@@ -10,6 +10,8 @@
 		482BAF12229D9BAA0092AB2F /* CyonCryptoSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 482BAF08229D9BA90092AB2F /* CyonCryptoSystem.framework */; };
 		482BAF17229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */; };
 		482BAF19229D9BAA0092AB2F /* CyonCryptoSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 482BAF0B229D9BA90092AB2F /* CyonCryptoSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48512FA722DB468300983578 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48512FA622DB468300983578 /* OrderedSet.swift */; };
+		48A6CBC7229EFFE100696227 /* SymmetricGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6CBC6229EFFE100696227 /* SymmetricGroup.swift */; };
 		E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FB229E673A00FCE4D3 /* Group.swift */; };
 		E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */; };
 		E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */; };
@@ -37,6 +39,8 @@
 		482BAF11229D9BAA0092AB2F /* CyonCryptoSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CyonCryptoSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteCyclicGroupOfIntegersModNTests.swift; sourceTree = "<group>"; };
 		482BAF18229D9BAA0092AB2F /* CyonCryptoSystem-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CyonCryptoSystem-Tests-Info.plist"; sourceTree = "<group>"; };
+		48512FA622DB468300983578 /* OrderedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
+		48A6CBC6229EFFE100696227 /* SymmetricGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroup.swift; sourceTree = "<group>"; };
 		E68BD7FB229E673A00FCE4D3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteGroup.swift; sourceTree = "<group>"; };
 		E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclicGroup.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		482BAF15229D9BAA0092AB2F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */,
 				482BAF23229D9BCA0092AB2F /* SupportingFiles */,
 			);
 			path = Tests;
@@ -113,15 +118,38 @@
 		482BAF23229D9BCA0092AB2F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */,
 				482BAF18229D9BAA0092AB2F /* CyonCryptoSystem-Tests-Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		48512FA422DB466600983578 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				48512FA522DB467400983578 /* OrderedSet */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		48512FA522DB467400983578 /* OrderedSet */ = {
+			isa = PBXGroup;
+			children = (
+				48512FA622DB468300983578 /* OrderedSet.swift */,
+			);
+			path = OrderedSet;
+			sourceTree = "<group>";
+		};
+		48A6CBC5229EFEFB00696227 /* PermutationGroups */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PermutationGroups;
+			sourceTree = "<group>";
+		};
 		E68BD7FA229E672600FCE4D3 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				48512FA422DB466600983578 /* Misc */,
 				E68BD7FE229E898400FCE4D3 /* Group */,
 			);
 			path = Code;
@@ -134,6 +162,7 @@
 				E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */,
 				E68BD803229E89C000FCE4D3 /* FiniteCyclicGroup.swift */,
 				E68BD805229E89D300FCE4D3 /* ModularGroup.swift */,
+				48A6CBC6229EFFE100696227 /* SymmetricGroup.swift */,
 			);
 			path = GroupTypes;
 			sourceTree = "<group>";
@@ -152,6 +181,7 @@
 		E68BD807229E89EB00FCE4D3 /* SpecificGroups */ = {
 			isa = PBXGroup;
 			children = (
+				48A6CBC5229EFEFB00696227 /* PermutationGroups */,
 				E68BD808229E89F400FCE4D3 /* IntegersModN */,
 			);
 			path = SpecificGroups;
@@ -289,8 +319,10 @@
 				E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */,
 				E68BD804229E89C000FCE4D3 /* FiniteCyclicGroup.swift in Sources */,
 				E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */,
+				48512FA722DB468300983578 /* OrderedSet.swift in Sources */,
 				E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */,
 				E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */,
+				48A6CBC7229EFFE100696227 /* SymmetricGroup.swift in Sources */,
 				E68BD80F229E8B9C00FCE4D3 /* AnyGroup.swift in Sources */,
 				E68BD80A229E8A0200FCE4D3 /* Integers64ModN.swift in Sources */,
 			);
