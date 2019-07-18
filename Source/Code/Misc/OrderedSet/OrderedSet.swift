@@ -8,6 +8,24 @@
 
 import Foundation
 
+public protocol OrderedSetType: RandomAccessCollection, Equatable where Element: Hashable {
+    init()
+    init(array: [Element])
+    init(set: Set<Element>)
+    init(single: Element)
+
+    mutating func append(_ newElement: Element) -> Bool
+
+//    func containsSameElements(as other: Self) -> Bool
+//    func sorted(by sorting: (Element, Element) throws -> Bool) rethrows -> Self
+}
+
+public extension OrderedSetType {
+    init(single: Element) {
+        self.init(array: [single])
+    }
+}
+
 /// An ordered set is an ordered collection of instances of `Element` in which
 /// uniqueness of the objects is guaranteed.
 ///
@@ -16,9 +34,7 @@ import Foundation
 /// [1]: https://github.com/apple/swift-package-manager/blob/master/Sources/Basic/OrderedSet.swift
 ///
 public struct OrderedSet<Element>:
-    Equatable,
-    Collection,
-    SetAlgebra,
+    OrderedSetType,
     ExpressibleByArrayLiteral,
     RandomAccessCollection,
     CustomStringConvertible
@@ -43,7 +59,7 @@ public extension OrderedSet {
     ///
     /// If an element occurs more than once in `element`, only the first one
     /// will be included.
-    init(_ array: [Element]) {
+    init(array: [Element]) {
         self.init()
         for element in array {
             append(element)
@@ -51,7 +67,7 @@ public extension OrderedSet {
     }
 
     /// Creates an ordered set with the contents of `set`.
-    init(_ set: Set<Element>) {
+    init(set: Set<Element>) {
         self.init()
         for element in set {
             append(element)
@@ -63,6 +79,17 @@ public extension OrderedSet {
 public extension OrderedSet {
     typealias Index = Int
     typealias Indices = Range<Int>
+}
+
+// MARK: OrderedSetType
+public extension OrderedSet {
+//    func containsSameElements(as other: OrderedSet<Element>) -> Bool {
+//        return self.set == other.set
+//    }
+//
+//    func sorted(by sorting: (Element, Element) throws -> Bool) rethrows -> OrderedSet {
+//        return OrderedSet(array: try array.sorted(by: sorting))
+//    }
 }
 
 // MARK: Computed Properties
@@ -79,81 +106,6 @@ public extension OrderedSet {
     var contents: [Element] { return array }
 }
 
-// MARK: SetAlgebra
-public extension OrderedSet {
-    
-    /// Returns `true` if the ordered set contains `member`.
-    func contains(_ member: Element) -> Bool {
-        return set.contains(member)
-    }
-
-    func union(_ other: OrderedSet<Element>) -> OrderedSet<Element> {
-        return performing(set.union, with: other)
-    }
-
-    func intersection(_ other: OrderedSet<Element>) -> OrderedSet<Element> {
-        return performing(set.intersection, with: other)
-    }
-
-    func symmetricDifference(_ other: OrderedSet<Element>) -> OrderedSet<Element> {
-        return performing(set.symmetricDifference, with: other)
-    }
-
-    mutating func insert(_ newMember: Element) -> (inserted: Bool, memberAfterInsert: Element) {
-        var copy = self.set
-        let result = copy.insert(newMember)
-        self = OrderedSet(copy)
-        return result
-    }
-
-    mutating func remove(_ member: Element) -> Element? {
-        return mutateSelf(withElement: member) { $0.remove($1) }
-    }
-
-    mutating func update(with newMember: Element) -> Element? {
-        return mutateSelf(withElement: newMember) { $0.update(with: $1) }
-    }
-
-    mutating func formUnion(_ other: OrderedSet<Element>) {
-        mutateSelf(withSet: other) { $0.formUnion($1) }
-    }
-
-    mutating func formIntersection(_ other: OrderedSet<Element>) {
-        mutateSelf(withSet: other) { $0.formIntersection($1) }
-    }
-
-    mutating func formSymmetricDifference(_ other: OrderedSet<Element>) {
-        mutateSelf(withSet: other) { $0.formSymmetricDifference($1) }
-    }
-}
-
-// MARK: Private
-private extension OrderedSet {
-
-    func performing(
-        _ setFunction: (Set<Element>) -> Set<Element>,
-        with otherOrderedSet: OrderedSet<Element>
-    ) -> OrderedSet<Element> {
-
-        let otherSet = otherOrderedSet.set
-        let resultingSet: Set<Element> = setFunction(otherSet)
-        return OrderedSet(resultingSet)
-    }
-
-    mutating func mutateSelf(withSet otherOrderedSet: OrderedSet<Element>, mutatingFunction: (inout Set<Element>, Set<Element>) -> Void) {
-        var copy = self.set
-        let otherSet = otherOrderedSet.set
-        mutatingFunction(&copy, otherSet)
-        self = OrderedSet(copy)
-    }
-
-    mutating func mutateSelf(withElement element: Element, mutatingFunction: (inout Set<Element>, Element) -> Element?) -> Element? {
-        var copy = self.set
-        let result = mutatingFunction(&copy, element)
-        self = OrderedSet(copy)
-        return result
-    }
-}
 
 // MARK: Mutating functions
 public extension OrderedSet {
@@ -200,7 +152,7 @@ public extension OrderedSet {
     /// If an element occurs more than once in `element`, only the first one
     /// will be included.
     init(arrayLiteral elements: Element...) {
-        self.init(elements)
+        self.init(array: elements)
     }
 }
 

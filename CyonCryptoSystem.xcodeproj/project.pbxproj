@@ -11,7 +11,10 @@
 		482BAF17229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */; };
 		482BAF19229D9BAA0092AB2F /* CyonCryptoSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 482BAF0B229D9BA90092AB2F /* CyonCryptoSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48512FA722DB468300983578 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48512FA622DB468300983578 /* OrderedSet.swift */; };
-		48A6CBC7229EFFE100696227 /* SymmetricGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6CBC6229EFFE100696227 /* SymmetricGroup.swift */; };
+		48A6CBC7229EFFE100696227 /* FiniteSymmetricGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6CBC6229EFFE100696227 /* FiniteSymmetricGroup.swift */; };
+		48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA08D22DCC11A00ACF289 /* Macros.swift */; };
+		48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */; };
+		48ABA09322DF439C00ACF289 /* SymmetricGroupsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */; };
 		E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FB229E673A00FCE4D3 /* Group.swift */; };
 		E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */; };
 		E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */; };
@@ -40,7 +43,10 @@
 		482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteCyclicGroupOfIntegersModNTests.swift; sourceTree = "<group>"; };
 		482BAF18229D9BAA0092AB2F /* CyonCryptoSystem-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CyonCryptoSystem-Tests-Info.plist"; sourceTree = "<group>"; };
 		48512FA622DB468300983578 /* OrderedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
-		48A6CBC6229EFFE100696227 /* SymmetricGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroup.swift; sourceTree = "<group>"; };
+		48A6CBC6229EFFE100696227 /* FiniteSymmetricGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteSymmetricGroup.swift; sourceTree = "<group>"; };
+		48ABA08D22DCC11A00ACF289 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
+		48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupOfIntegersOnCyclicNotation.swift; sourceTree = "<group>"; };
+		48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupsTest.swift; sourceTree = "<group>"; };
 		E68BD7FB229E673A00FCE4D3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteGroup.swift; sourceTree = "<group>"; };
 		E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclicGroup.swift; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */,
+				48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */,
 				482BAF23229D9BCA0092AB2F /* SupportingFiles */,
 			);
 			path = Tests;
@@ -127,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				48512FA522DB467400983578 /* OrderedSet */,
+				48ABA08D22DCC11A00ACF289 /* Macros.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -142,8 +150,17 @@
 		48A6CBC5229EFEFB00696227 /* PermutationGroups */ = {
 			isa = PBXGroup;
 			children = (
+				48ABA08F22DCC13400ACF289 /* SymmetricGroups */,
 			);
 			path = PermutationGroups;
+			sourceTree = "<group>";
+		};
+		48ABA08F22DCC13400ACF289 /* SymmetricGroups */ = {
+			isa = PBXGroup;
+			children = (
+				48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */,
+			);
+			path = SymmetricGroups;
 			sourceTree = "<group>";
 		};
 		E68BD7FA229E672600FCE4D3 /* Code */ = {
@@ -162,7 +179,7 @@
 				E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */,
 				E68BD803229E89C000FCE4D3 /* FiniteCyclicGroup.swift */,
 				E68BD805229E89D300FCE4D3 /* ModularGroup.swift */,
-				48A6CBC6229EFFE100696227 /* SymmetricGroup.swift */,
+				48A6CBC6229EFFE100696227 /* FiniteSymmetricGroup.swift */,
 			);
 			path = GroupTypes;
 			sourceTree = "<group>";
@@ -320,9 +337,11 @@
 				E68BD804229E89C000FCE4D3 /* FiniteCyclicGroup.swift in Sources */,
 				E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */,
 				48512FA722DB468300983578 /* OrderedSet.swift in Sources */,
+				48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift in Sources */,
+				48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */,
 				E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */,
 				E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */,
-				48A6CBC7229EFFE100696227 /* SymmetricGroup.swift in Sources */,
+				48A6CBC7229EFFE100696227 /* FiniteSymmetricGroup.swift in Sources */,
 				E68BD80F229E8B9C00FCE4D3 /* AnyGroup.swift in Sources */,
 				E68BD80A229E8A0200FCE4D3 /* Integers64ModN.swift in Sources */,
 			);
@@ -333,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				482BAF17229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift in Sources */,
+				48ABA09322DF439C00ACF289 /* SymmetricGroupsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
