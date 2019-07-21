@@ -26,6 +26,16 @@ class SymmetricGroupsTest: XCTestCase {
         )
     }
 
+    func testInverseOfSymmetricGroup() {
+        let f = S.Element(single: [3, 2, 1, 5, 4])
+
+        // `f` in reversed order
+        let expectedInverse = S.Element(single: [4, 5, 1, 2, 3])
+
+        let inverse = S5.inverse(of: f)
+        XCTAssertEqual(inverse, expectedInverse)
+    }
+
     func testFunctionCompositionOnOneLineNotation() {
         let f = S.Element(single: [3, 2, 1, 5, 4])
         let g = S.Element(single: [2, 5, 4, 3, 1])
@@ -38,6 +48,12 @@ class SymmetricGroupsTest: XCTestCase {
         let g = S.Element(array: [[1, 2, 5], [3, 4]])
         let f_o_g = S5.functionComposition(f: f, g: g)
         XCTAssertEqual(f_o_g, S.Element(single: [2, 4, 5, 1, 3]))
+    }
+
+    func testFunctionCompositionWithIdentityResultsInElement() {
+        let f = S.Element(single: [3, 2, 1, 5, 4])
+        let f_o_g = S5.functionComposition(f: f, g: S5.identity)
+        XCTAssertEqual(f_o_g, f)
     }
 
     func testCollectionCountedElementsZero() {
@@ -247,6 +263,4 @@ class SymmetricGroupsTest: XCTestCase {
             [3, 4, 5, 6, 7, 8, 9, 10, 1, 2]
         )
     }
-
-
 }

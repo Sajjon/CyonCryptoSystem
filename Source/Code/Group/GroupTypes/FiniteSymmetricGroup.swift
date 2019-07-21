@@ -53,16 +53,21 @@ public extension FiniteSymmetricGroup {
                 guard wasInserted else { return false }
             }
         }
-        return true //setToEnsureEachAtomOnlyUsedOnce.containsSameElements(as: set)
+        return true
     }
 
+    /// Since the identity is the set of elements from 1 to N, where N is the order, i.e. the size of the set, the inverse permutation is the permutation resulting in the set of elements.
+    ///
+    /// Consider the permutation on One-Line notation: `(3 2 1 5 4)`,  the inverse is the permutation in reversed order, i.e. `(4 5 1 2 3)`:
+    ///
+    ///     (1 2 3 4 5) ∘ (1 2 3 4 5) = (1 2 3 4 5)
+    ///     (3 2 1 5 4) ∘ (4 5 1 2 3) = (1 2 3 4 5)
+    ///
     func inverse(of element: Element) -> Element {
-        implementMe
+        return Element(array: element.map { cycle in
+            Permutation(array: cycle.reversed())
+        })
     }
-}
-
-public extension FiniteSymmetricGroup {
-
 }
 
 // MARK: where PermutationElement: Comparable

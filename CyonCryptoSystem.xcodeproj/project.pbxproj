@@ -17,6 +17,7 @@
 		48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA08D22DCC11A00ACF289 /* Macros.swift */; };
 		48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */; };
 		48ABA09322DF439C00ACF289 /* SymmetricGroupsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */; };
+		48CF484722E46F1600D0A04B /* RandomAccessCollection_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF484622E46F1600D0A04B /* RandomAccessCollection_Extension.swift */; };
 		E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FB229E673A00FCE4D3 /* Group.swift */; };
 		E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */; };
 		E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */; };
@@ -51,6 +52,7 @@
 		48ABA08D22DCC11A00ACF289 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupOfIntegersOnCyclicNotation.swift; sourceTree = "<group>"; };
 		48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupsTest.swift; sourceTree = "<group>"; };
+		48CF484622E46F1600D0A04B /* RandomAccessCollection_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAccessCollection_Extension.swift; sourceTree = "<group>"; };
 		E68BD7FB229E673A00FCE4D3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteGroup.swift; sourceTree = "<group>"; };
 		E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclicGroup.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				4858959022E1019700D85E6F /* Collection_Extension.swift */,
+				48CF484622E46F1600D0A04B /* RandomAccessCollection_Extension.swift */,
 				4858959222E101AF00D85E6F /* ZeroOneTwoAndMany.swift */,
 			);
 			path = Extensions;
@@ -352,6 +355,7 @@
 				E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */,
 				48512FA722DB468300983578 /* OrderedSet.swift in Sources */,
 				48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift in Sources */,
+				48CF484722E46F1600D0A04B /* RandomAccessCollection_Extension.swift in Sources */,
 				48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */,
 				E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */,
 				E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */,
