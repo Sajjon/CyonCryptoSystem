@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Int: GroupElement {}
-extension Int64: GroupElement {}
-
-extension UInt8: GroupElement {}
-extension UInt: GroupElement {}
+//extension Int: GroupElement {}
+//extension Int64: GroupElement {}
+//
+//extension UInt8: GroupElement {}
+//extension UInt: GroupElement {}

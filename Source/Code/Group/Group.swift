@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Group {
+public protocol Group: Equatable where Element.InGroup == Self {
     
     /// The type of elements in the group. Must conform to `Equatable`
     associatedtype Element: GroupElement
@@ -38,3 +38,4 @@ public protocol Group {
     /// - Returns: Element in the group, being the result of this operation
     func operation(_ lhs: Element, _ rhs: Element) -> Element
 }
+

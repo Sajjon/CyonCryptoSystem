@@ -25,6 +25,26 @@ public struct SymmetricGroupOfIntegers: FiniteSymmetricGroup {
 // MARK: FiniteSymmetricGroup
 public extension SymmetricGroupOfIntegers {
 
+    /// The `identity` of a symmetric group of `n` elements, on cycle notation, is just the single cycle (0, 1, 2, ..., `n-1`).
+     var identity: Element {
+         return Element(set, inGroup: self)
+     }
+
+
+    /// Since the identity is the set of elements from 1 to N, where N is the order, i.e. the size of the set, the inverse permutation is the permutation resulting in the set of elements.
+    ///
+    /// Consider the permutation on One-Line notation: `(3 2 1 5 4)`,  the inverse is the permutation in reversed order, i.e. `(4 5 1 2 3)`:
+    ///
+    ///     (1 2 3 4 5) ∘ (1 2 3 4 5) = (1 2 3 4 5)
+    ///     (3 2 1 5 4) ∘ (4 5 1 2 3) = (1 2 3 4 5)
+    ///
+    func inverse(of element: Element) -> Element {
+
+        return Element(array: element.map { cycle in
+                    Permutation(array: cycle.reversed())
+        }, inGroup: self)
+    }
+
     /// Example from: https://en.wikipedia.org/wiki/Symmetric_group#Multiplication
     /// two-line notation:
     ///      f(x): (3 2 1 5 4)
@@ -59,7 +79,7 @@ public extension SymmetricGroupOfIntegers {
             resultOnOneLineNotation.append(elementInF)
         }
 
-        return Element(resultOnOneLineNotation)
+        return Element(resultOnOneLineNotation, inGroup: self)
     }
 }
 
@@ -78,62 +98,65 @@ private extension SymmetricGroupOfIntegers {
 
 // MARK: Element
 public extension SymmetricGroupOfIntegers {
-    enum Element: GroupElement, RandomAccessCollection & OrderedSetInitializable & OrderedSetArrayInitializable & ExpressibleByArrayLiteral {
+    enum Element: GroupElement, RandomAccessCollection, Equatable {
+        public typealias InGroup = SymmetricGroupOfIntegers
         public typealias OneCycle = Permutation
         public typealias Cycles = OrderedSet<OneCycle>
         public typealias Element = Permutation
 
-        case oneLineNotation(OneCycle)
-        case cyclicNotation(Cycles)
+        case oneLineNotation(OneCycle, inGroup: InGroup)
+        case cyclicNotation(Cycles, inGroup: InGroup)
+    }
+
+    func oneLine(_ oneCycle: Element.OneCycle) -> Element {
+        return Element(oneCycle, inGroup: self)
+    }
+
+    func cyclic(_ cycles: Element.Cycles) -> Element {
+        return Element(cycles, inGroup: self)
     }
 }
 
 // MARK: Element Public
 public extension SymmetricGroupOfIntegers.Element {
 
-    init(array: [Element]) {
-        self = .cyclicNotation(Cycles.init(array: array))
-    }
-
-    // MARK: OrderedSetArrayInitializable
-    init(orderedSetArray: [OneCycle]) {
-        switch orderedSetArray.countedElementsZeroOneTwoAndMany {
-        case .one(let single): self.init(single)
-        default: self.init(array: orderedSetArray)
+    var inGroup: InGroup {
+        switch self {
+        case .cyclicNotation(_, let inGroup): return inGroup
+        case .oneLineNotation(_, let inGroup): return inGroup
         }
-
     }
 
-    // MARK: OrderedSetInitializable
-    init(orderedSet: OneCycle) {
-        self = .oneLineNotation(orderedSet)
+    init(array: [Element], inGroup: InGroup) {
+        self = .cyclicNotation(Cycles.init(array: array), inGroup: inGroup)
     }
 
-    // MARK: ExpressibleByArrayLiteral
-    init(arrayLiteral elements: Element...) {
-        self.init(array: elements)
+    init(_ oneCycle: OneCycle, inGroup: InGroup) {
+        self = .oneLineNotation(oneCycle, inGroup: inGroup)
     }
 
-    init(_ oneCycle: OneCycle) {
-        self = .oneLineNotation(oneCycle)
-    }
-
-    init(_ cycles: Cycles, ensureCanonicalForm: Bool = true) {
+    init(_ cycles: Cycles, inGroup: InGroup, ensureCanonicalForm: Bool = true) {
         var cycles = cycles
         if ensureCanonicalForm {
             cycles = SymmetricGroupOfIntegers.Element.toCanonical(cycles: cycles)
         }
-        self = .cyclicNotation(cycles)
+        self = .cyclicNotation(cycles, inGroup: inGroup)
+    }
+
+    // MARK: Equatable
+    static func == (lhs: SymmetricGroupOfIntegers.Element, rhs: SymmetricGroupOfIntegers.Element) -> Bool {
+        guard lhs.inGroup == rhs.inGroup else { return false }
+        return lhs.underlyingCycles == rhs.underlyingCycles
     }
 
     // MARK: CustomStringConvertible
     var description: String {
         switch self {
-        case .cyclicNotation(let cycles):
+        case .cyclicNotation(let cycles, _):
             return """
             CyclicNotation(\(cycles.description))
             """
-        case .oneLineNotation(let cycle):
+        case .oneLineNotation(let cycle, _):
             return """
             OneLineNotation(\(cycle.description))
             """
@@ -152,11 +175,11 @@ public extension SymmetricGroupOfIntegers.Element {
 public extension SymmetricGroupOfIntegers.Element {
 
     func onOneLineNotation() -> SymmetricGroupOfIntegers.Element {
-        return SymmetricGroupOfIntegers.Element.oneLineNotation(asOneLine())
+        return SymmetricGroupOfIntegers.Element.oneLineNotation(asOneLine(), inGroup: self.inGroup)
     }
 
     func onCyclicNotation() -> SymmetricGroupOfIntegers.Element {
-        return SymmetricGroupOfIntegers.Element.cyclicNotation(asCycles())
+        return SymmetricGroupOfIntegers.Element.cyclicNotation(asCycles(), inGroup: self.inGroup)
     }
 
     /// Returns this symetric group on [One-Line notation][1]
@@ -176,8 +199,8 @@ public extension SymmetricGroupOfIntegers.Element {
     func asOneLine() -> OneCycle {
 
         switch self {
-        case .oneLineNotation(let cycle): return cycle
-        case .cyclicNotation(let cycles):
+        case .oneLineNotation(let cycle, _): return cycle
+        case .cyclicNotation(let cycles, _):
             var dictionary = [SymmetricGroupOfIntegers.PermutationElement: SymmetricGroupOfIntegers.PermutationElement]()
 
             for cycle in cycles {
@@ -226,8 +249,8 @@ public extension SymmetricGroupOfIntegers.Element {
     func asCycles() -> Cycles {
 
         switch self {
-        case .cyclicNotation(let cycles): return cycles
-        case .oneLineNotation(let cycle):
+        case .cyclicNotation(let cycles, _): return cycles
+        case .oneLineNotation(let cycle, _ ):
 
             var onCyclicNotation = Cycles()
             for permutationElement in cycle {
@@ -273,8 +296,8 @@ public extension SymmetricGroupOfIntegers.Element {
 private extension SymmetricGroupOfIntegers.Element {
     var underlyingCycles: Cycles {
         switch self {
-        case .cyclicNotation(let cycles): return cycles
-        case .oneLineNotation(let cycle): return Cycles(single: cycle)
+        case .cyclicNotation(let cycles, _): return cycles
+        case .oneLineNotation(let cycle, _): return Cycles(single: cycle)
         }
     }
 }

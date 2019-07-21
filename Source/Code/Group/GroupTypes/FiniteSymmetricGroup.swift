@@ -11,34 +11,25 @@ import Foundation
 // MARK: FiniteSymmetricGroup
 public protocol FiniteSymmetricGroup: FiniteGroup where
     Element: RandomAccessCollection,
-    Element: OrderedSetInitializable,
-    Element: OrderedSetArrayInitializable,
-    Element: ExpressibleByArrayLiteral,
     // where
     Element.Element == Permutation,
-    Element.TypeOfOrderedSet == Permutation,
     // where
     Permutation.Element == PermutationElement
 {
-    associatedtype PermutationElement: GroupElement
-    associatedtype Permutation
+    associatedtype PermutationElement: CustomStringConvertible
+    associatedtype Permutation: OrderedSetType
     var set: Permutation { get }
     func functionComposition(f: Element, g: Element) -> Element
 }
 
 // MARK: Default
 public extension FiniteSymmetricGroup {
-    var order: Int64 {
-        return Int64(set.count)
+    var order: Int {
+        return set.count
     }
 
     func operation(_ lhs: Element, _ rhs: Element) -> Element {
         return functionComposition(f: lhs, g: rhs)
-    }
-
-    /// The `identity` of a symmetric group of `n` elements, on cycle notation, is just the single cycle (0, 1, 2, ..., `n-1`).
-    var identity: Element {
-        return Element(orderedSet: set)
     }
 
     func isElementInGroup(_ value: Element) -> Bool {
@@ -50,20 +41,6 @@ public extension FiniteSymmetricGroup {
             }
         }
         return true
-    }
-
-    /// Since the identity is the set of elements from 1 to N, where N is the order, i.e. the size of the set, the inverse permutation is the permutation resulting in the set of elements.
-    ///
-    /// Consider the permutation on One-Line notation: `(3 2 1 5 4)`,  the inverse is the permutation in reversed order, i.e. `(4 5 1 2 3)`:
-    ///
-    ///     (1 2 3 4 5) ∘ (1 2 3 4 5) = (1 2 3 4 5)
-    ///     (3 2 1 5 4) ∘ (4 5 1 2 3) = (1 2 3 4 5)
-    ///
-    func inverse(of element: Element) -> Element {
-
-        return Element.init(orderedSetArray: element.map { cycle in
-                    Permutation(array: cycle.reversed())
-                })
     }
 }
 

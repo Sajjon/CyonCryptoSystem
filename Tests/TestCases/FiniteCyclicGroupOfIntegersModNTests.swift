@@ -9,64 +9,59 @@
 import XCTest
 @testable import CyonCryptoSystem
 
-private typealias IntegersModN = Integers64ModN
 
 class FiniteCyclicGroupOfIntegersModNTests: XCTestCase {
 
-    private let z3 = IntegersModN(n: 3)
     private let z5 = IntegersModN(n: 5)
+    private lazy var zero = z5.element(0)
+    private lazy var one = z5.element(1)
+    private lazy var two = z5.element(2)
+    private lazy var three = z5.element(3)
+    private lazy var four = z5.element(4)
 
     func testIdentityIs0() {
-        [z3, z5].forEach {
-            XCTAssertEqual($0.identity, 0)
-        }
+        XCTAssertEqual(z5.identity, zero)
     }
 
     func testSymmetricGroup() {
         
     }
-    
-    func testInverseOfZ3() {
-        XCTAssertEqual(z3.inverse(of: 1), 2)
-        XCTAssertEqual(z3.inverse(of: 2), 1)
-    }
+
     
     func testInverseOfZ5() {
-        XCTAssertEqual(z5.inverse(of: 1), 4)
-        XCTAssertEqual(z5.inverse(of: 2), 3)
-        XCTAssertEqual(z5.inverse(of: 3), 2)
-        XCTAssertEqual(z5.inverse(of: 4), 1)
+        XCTAssertEqual(z5.inverse(of: one), four)
+        XCTAssertEqual(z5.inverse(of: two), three)
+        XCTAssertEqual(z5.inverse(of: three), two)
+        XCTAssertEqual(z5.inverse(of: four), one)
     }
     
     func testOrder() {
-        XCTAssertEqual(z3.order, 3)
         XCTAssertEqual(z5.order, 5)
     }
     
     func testIdentityDoesNotChangeElement() {
-        func testThatOperationBetween<G, Element>(_ elementInGroup: Element, andIdentityInGroupDoesNotChangeTheElement group: G) where G: Group, Element == G.Element {
+        func testThatOperationBetween<G>(_ elementInGroup: G.Element, andIdentityInGroupDoesNotChangeTheElement group: G) where G: Group {
             
             XCTAssertEqual(
                 group.operation(elementInGroup, group.identity),
                 elementInGroup
             )
         }
-        testThatOperationBetween(1, andIdentityInGroupDoesNotChangeTheElement: z3)
-        testThatOperationBetween(2, andIdentityInGroupDoesNotChangeTheElement: z3)
 
-        testThatOperationBetween(1, andIdentityInGroupDoesNotChangeTheElement: z5)
-        testThatOperationBetween(2, andIdentityInGroupDoesNotChangeTheElement: z5)
-        testThatOperationBetween(3, andIdentityInGroupDoesNotChangeTheElement: z5)
-        testThatOperationBetween(4, andIdentityInGroupDoesNotChangeTheElement: z5)
+
+        testThatOperationBetween(one, andIdentityInGroupDoesNotChangeTheElement: z5)
+        testThatOperationBetween(two, andIdentityInGroupDoesNotChangeTheElement: z5)
+        testThatOperationBetween(three, andIdentityInGroupDoesNotChangeTheElement: z5)
+        testThatOperationBetween(four, andIdentityInGroupDoesNotChangeTheElement: z5)
 
     }
 }
 
 private extension XCTestCase {
-    func thatOperationBetween<G, Element>(
-        _ a: Element,
+    func thatOperationBetween<G>(
+        _ a: G.Element,
         andIdentityInGroupDoesNotChangeTheElement group: G
-    ) where G: Group, Element == G.Element {
+    ) where G: Group {
         
         doTestOperationBetween(a,
                                and: group.identity,
@@ -74,12 +69,12 @@ private extension XCTestCase {
                                expectedResult: a)
     }
     
-    func doTestOperationBetween<G, Element>(
-        _ a: Element,
-        and b: Element,
+    func doTestOperationBetween<G>(
+        _ a: G.Element,
+        and b: G.Element,
         in group: G,
-        expectedResult: Element
-    ) where G: Group, Element == G.Element {
+        expectedResult: G.Element
+    ) where G: Group {
         
         XCTAssertTrue(group.isElementInGroup(a))
         XCTAssertTrue(group.isElementInGroup(b))

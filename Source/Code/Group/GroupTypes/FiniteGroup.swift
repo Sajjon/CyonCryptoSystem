@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol FiniteGroup: Group {
-    var order: Int64 { get }
+    var order: Int { get }
 }

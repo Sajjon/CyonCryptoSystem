@@ -32,8 +32,7 @@
 		E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */; };
 		E68BD804229E89C000FCE4D3 /* FiniteCyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD803229E89C000FCE4D3 /* FiniteCyclicGroup.swift */; };
 		E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD805229E89D300FCE4D3 /* ModularGroup.swift */; };
-		E68BD80A229E8A0200FCE4D3 /* Integers64ModN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD809229E8A0200FCE4D3 /* Integers64ModN.swift */; };
-		E68BD80D229E8B2900FCE4D3 /* SomeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD80C229E8B2900FCE4D3 /* SomeGroup.swift */; };
+		E68BD80A229E8A0200FCE4D3 /* IntegersModN.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD809229E8A0200FCE4D3 /* IntegersModN.swift */; };
 		E68BD80F229E8B9C00FCE4D3 /* AnyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD80E229E8B9C00FCE4D3 /* AnyGroup.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,8 +75,7 @@
 		E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclicGroup.swift; sourceTree = "<group>"; };
 		E68BD803229E89C000FCE4D3 /* FiniteCyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteCyclicGroup.swift; sourceTree = "<group>"; };
 		E68BD805229E89D300FCE4D3 /* ModularGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModularGroup.swift; sourceTree = "<group>"; };
-		E68BD809229E8A0200FCE4D3 /* Integers64ModN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integers64ModN.swift; sourceTree = "<group>"; };
-		E68BD80C229E8B2900FCE4D3 /* SomeGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeGroup.swift; sourceTree = "<group>"; };
+		E68BD809229E8A0200FCE4D3 /* IntegersModN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegersModN.swift; sourceTree = "<group>"; };
 		E68BD80E229E8B9C00FCE4D3 /* AnyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -299,7 +297,7 @@
 		E68BD808229E89F400FCE4D3 /* IntegersModN */ = {
 			isa = PBXGroup;
 			children = (
-				E68BD809229E8A0200FCE4D3 /* Integers64ModN.swift */,
+				E68BD809229E8A0200FCE4D3 /* IntegersModN.swift */,
 			);
 			path = IntegersModN;
 			sourceTree = "<group>";
@@ -307,7 +305,6 @@
 		E68BD80B229E8B1F00FCE4D3 /* Container */ = {
 			isa = PBXGroup;
 			children = (
-				E68BD80C229E8B2900FCE4D3 /* SomeGroup.swift */,
 				E68BD80E229E8B9C00FCE4D3 /* AnyGroup.swift */,
 			);
 			path = Container;
@@ -424,7 +421,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E68BD80D229E8B2900FCE4D3 /* SomeGroup.swift in Sources */,
 				48CF484E22E49F2000D0A04B /* GroupElement+Integers.swift in Sources */,
 				48CF485422E49F7100D0A04B /* OrderedSetInitializable.swift in Sources */,
 				E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */,
@@ -443,7 +439,7 @@
 				4858959322E101AF00D85E6F /* ZeroOneTwoAndMany.swift in Sources */,
 				48A6CBC7229EFFE100696227 /* FiniteSymmetricGroup.swift in Sources */,
 				E68BD80F229E8B9C00FCE4D3 /* AnyGroup.swift in Sources */,
-				E68BD80A229E8A0200FCE4D3 /* Integers64ModN.swift in Sources */,
+				E68BD80A229E8A0200FCE4D3 /* IntegersModN.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

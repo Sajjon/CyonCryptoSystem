@@ -8,6 +8,6 @@
 
 import Foundation
 
-extension Array: GroupElement where Element: Equatable {}
-extension Set: GroupElement {}
-extension OrderedSet: GroupElement where Element: Equatable {}
+//extension Array: GroupElement where Element: Equatable {}
+//extension Set: GroupElement {}
+//extension OrderedSet: GroupElement where Element: Equatable {}

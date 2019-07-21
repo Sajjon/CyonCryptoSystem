@@ -9,17 +9,13 @@
 import Foundation
 
 public protocol ModularGroup: FiniteGroup {
-    var modulus: Element { get }
-}
-
-public extension ModularGroup where Element: FixedWidthInteger {
-    var order: Int64 { return Int64(modulus) }
+    var modulus: (Self, Element) -> Element { get }
 }
 
 // MARK: - Public
 public extension ModularGroup where Element: ModularElement {
     func modN(_ combineElements: () -> Element) -> Element {
-        return combineElements() % modulus
+        return modulus(self, combineElements())
     }
 }
 
