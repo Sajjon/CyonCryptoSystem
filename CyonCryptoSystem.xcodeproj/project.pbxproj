@@ -15,9 +15,18 @@
 		4858959322E101AF00D85E6F /* ZeroOneTwoAndMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858959222E101AF00D85E6F /* ZeroOneTwoAndMany.swift */; };
 		48A6CBC7229EFFE100696227 /* FiniteSymmetricGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6CBC6229EFFE100696227 /* FiniteSymmetricGroup.swift */; };
 		48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA08D22DCC11A00ACF289 /* Macros.swift */; };
-		48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */; };
+		48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegers.swift */; };
 		48ABA09322DF439C00ACF289 /* SymmetricGroupsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */; };
 		48CF484722E46F1600D0A04B /* RandomAccessCollection_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF484622E46F1600D0A04B /* RandomAccessCollection_Extension.swift */; };
+		48CF484A22E49EF600D0A04B /* GroupElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF484922E49EF600D0A04B /* GroupElement.swift */; };
+		48CF484E22E49F2000D0A04B /* GroupElement+Integers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF484D22E49F2000D0A04B /* GroupElement+Integers.swift */; };
+		48CF485122E49F4300D0A04B /* GroupElement+Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF485022E49F4300D0A04B /* GroupElement+Collections.swift */; };
+		48CF485422E49F7100D0A04B /* OrderedSetInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF485322E49F7100D0A04B /* OrderedSetInitializable.swift */; };
+		48CF485622E49F8200D0A04B /* OrderedSetArrayInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF485522E49F8200D0A04B /* OrderedSetArrayInitializable.swift */; };
+		48CF485B22E4A07400D0A04B /* CollectionCountedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF485A22E4A05900D0A04B /* CollectionCountedTests.swift */; };
+		48CF485D22E4A09000D0A04B /* SlidingWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF485C22E4A09000D0A04B /* SlidingWindowTests.swift */; };
+		48CF485F22E4A0C400D0A04B /* RotateArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF485E22E4A0C400D0A04B /* RotateArrayTests.swift */; };
+		48CF486122E4A0E700D0A04B /* ShiftArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CF486022E4A0E700D0A04B /* ShiftArrayTests.swift */; };
 		E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FB229E673A00FCE4D3 /* Group.swift */; };
 		E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */; };
 		E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */; };
@@ -50,9 +59,18 @@
 		4858959222E101AF00D85E6F /* ZeroOneTwoAndMany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroOneTwoAndMany.swift; sourceTree = "<group>"; };
 		48A6CBC6229EFFE100696227 /* FiniteSymmetricGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteSymmetricGroup.swift; sourceTree = "<group>"; };
 		48ABA08D22DCC11A00ACF289 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
-		48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupOfIntegersOnCyclicNotation.swift; sourceTree = "<group>"; };
+		48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupOfIntegers.swift; sourceTree = "<group>"; };
 		48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupsTest.swift; sourceTree = "<group>"; };
 		48CF484622E46F1600D0A04B /* RandomAccessCollection_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAccessCollection_Extension.swift; sourceTree = "<group>"; };
+		48CF484922E49EF600D0A04B /* GroupElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GroupElement.swift; path = ../../../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Source/Code/Group/GroupElement/GroupElement.swift; sourceTree = "<group>"; };
+		48CF484D22E49F2000D0A04B /* GroupElement+Integers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GroupElement+Integers.swift"; path = "../../../../../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Source/Code/Group/GroupElement/GroupElement+Predefined/Integers/GroupElement+Integers.swift"; sourceTree = "<group>"; };
+		48CF485022E49F4300D0A04B /* GroupElement+Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "GroupElement+Collections.swift"; path = "../../../../../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Source/Code/Group/GroupElement/GroupElement+Predefined/Collections/GroupElement+Collections.swift"; sourceTree = "<group>"; };
+		48CF485322E49F7100D0A04B /* OrderedSetInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderedSetInitializable.swift; path = ../../../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Source/Code/Misc/OrderedSetInit/OrderedSetInitializable.swift; sourceTree = "<group>"; };
+		48CF485522E49F8200D0A04B /* OrderedSetArrayInitializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderedSetArrayInitializable.swift; path = ../../../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Source/Code/Misc/OrderedSetInit/OrderedSetArrayInitializable.swift; sourceTree = "<group>"; };
+		48CF485A22E4A05900D0A04B /* CollectionCountedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCountedTests.swift; sourceTree = "<group>"; };
+		48CF485C22E4A09000D0A04B /* SlidingWindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlidingWindowTests.swift; path = ../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Tests/TestCases/SlidingWindowTests.swift; sourceTree = "<group>"; };
+		48CF485E22E4A0C400D0A04B /* RotateArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RotateArrayTests.swift; path = ../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Tests/TestCases/RotateArrayTests.swift; sourceTree = "<group>"; };
+		48CF486022E4A0E700D0A04B /* ShiftArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShiftArrayTests.swift; path = ../../../../../../../../../System/Volumes/Data/Users/sajjon/Developer/Swift/Sources/Crypto/CyonCryptoSystem/Tests/TestCases/ShiftArrayTests.swift; sourceTree = "<group>"; };
 		E68BD7FB229E673A00FCE4D3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		E68BD7FF229E899900FCE4D3 /* FiniteGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteGroup.swift; sourceTree = "<group>"; };
 		E68BD801229E89A400FCE4D3 /* CyclicGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclicGroup.swift; sourceTree = "<group>"; };
@@ -112,8 +130,7 @@
 		482BAF15229D9BAA0092AB2F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */,
-				48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */,
+				48CF485922E4A05200D0A04B /* TestCases */,
 				482BAF23229D9BCA0092AB2F /* SupportingFiles */,
 			);
 			path = Tests;
@@ -139,6 +156,7 @@
 		48512FA422DB466600983578 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				48CF485222E49F5A00D0A04B /* OrderedSetInit */,
 				48512FA522DB467400983578 /* OrderedSet */,
 				48ABA08D22DCC11A00ACF289 /* Macros.swift */,
 			);
@@ -174,9 +192,65 @@
 		48ABA08F22DCC13400ACF289 /* SymmetricGroups */ = {
 			isa = PBXGroup;
 			children = (
-				48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */,
+				48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegers.swift */,
 			);
 			path = SymmetricGroups;
+			sourceTree = "<group>";
+		};
+		48CF484822E49EE300D0A04B /* GroupElement */ = {
+			isa = PBXGroup;
+			children = (
+				48CF484922E49EF600D0A04B /* GroupElement.swift */,
+				48CF484B22E49F0300D0A04B /* GroupElement+Predefined */,
+			);
+			path = GroupElement;
+			sourceTree = "<group>";
+		};
+		48CF484B22E49F0300D0A04B /* GroupElement+Predefined */ = {
+			isa = PBXGroup;
+			children = (
+				48CF484F22E49F2D00D0A04B /* Collections */,
+				48CF484C22E49F0F00D0A04B /* Integers */,
+			);
+			path = "GroupElement+Predefined";
+			sourceTree = "<group>";
+		};
+		48CF484C22E49F0F00D0A04B /* Integers */ = {
+			isa = PBXGroup;
+			children = (
+				48CF484D22E49F2000D0A04B /* GroupElement+Integers.swift */,
+			);
+			path = Integers;
+			sourceTree = "<group>";
+		};
+		48CF484F22E49F2D00D0A04B /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				48CF485022E49F4300D0A04B /* GroupElement+Collections.swift */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		48CF485222E49F5A00D0A04B /* OrderedSetInit */ = {
+			isa = PBXGroup;
+			children = (
+				48CF485322E49F7100D0A04B /* OrderedSetInitializable.swift */,
+				48CF485522E49F8200D0A04B /* OrderedSetArrayInitializable.swift */,
+			);
+			path = OrderedSetInit;
+			sourceTree = "<group>";
+		};
+		48CF485922E4A05200D0A04B /* TestCases */ = {
+			isa = PBXGroup;
+			children = (
+				482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */,
+				48ABA09222DF439C00ACF289 /* SymmetricGroupsTest.swift */,
+				48CF485A22E4A05900D0A04B /* CollectionCountedTests.swift */,
+				48CF485C22E4A09000D0A04B /* SlidingWindowTests.swift */,
+				48CF485E22E4A0C400D0A04B /* RotateArrayTests.swift */,
+				48CF486022E4A0E700D0A04B /* ShiftArrayTests.swift */,
+			);
+			path = TestCases;
 			sourceTree = "<group>";
 		};
 		E68BD7FA229E672600FCE4D3 /* Code */ = {
@@ -204,6 +278,7 @@
 		E68BD7FE229E898400FCE4D3 /* Group */ = {
 			isa = PBXGroup;
 			children = (
+				48CF484822E49EE300D0A04B /* GroupElement */,
 				E68BD80B229E8B1F00FCE4D3 /* Container */,
 				E68BD807229E89EB00FCE4D3 /* SpecificGroups */,
 				E68BD7FD229E897600FCE4D3 /* GroupTypes */,
@@ -350,13 +425,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68BD80D229E8B2900FCE4D3 /* SomeGroup.swift in Sources */,
+				48CF484E22E49F2000D0A04B /* GroupElement+Integers.swift in Sources */,
+				48CF485422E49F7100D0A04B /* OrderedSetInitializable.swift in Sources */,
 				E68BD802229E89A400FCE4D3 /* CyclicGroup.swift in Sources */,
 				E68BD804229E89C000FCE4D3 /* FiniteCyclicGroup.swift in Sources */,
 				E68BD800229E899900FCE4D3 /* FiniteGroup.swift in Sources */,
+				48CF485622E49F8200D0A04B /* OrderedSetArrayInitializable.swift in Sources */,
+				48CF484A22E49EF600D0A04B /* GroupElement.swift in Sources */,
 				48512FA722DB468300983578 /* OrderedSet.swift in Sources */,
-				48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift in Sources */,
+				48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegers.swift in Sources */,
 				48CF484722E46F1600D0A04B /* RandomAccessCollection_Extension.swift in Sources */,
 				48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */,
+				48CF485122E49F4300D0A04B /* GroupElement+Collections.swift in Sources */,
 				E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */,
 				E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */,
 				4858959122E1019700D85E6F /* Collection_Extension.swift in Sources */,
@@ -371,8 +451,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48CF485D22E4A09000D0A04B /* SlidingWindowTests.swift in Sources */,
+				48CF485B22E4A07400D0A04B /* CollectionCountedTests.swift in Sources */,
 				482BAF17229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift in Sources */,
 				48ABA09322DF439C00ACF289 /* SymmetricGroupsTest.swift in Sources */,
+				48CF486122E4A0E700D0A04B /* ShiftArrayTests.swift in Sources */,
+				48CF485F22E4A0C400D0A04B /* RotateArrayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

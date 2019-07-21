@@ -8,8 +8,6 @@
 
 import Foundation
 
-public protocol GroupElement: Equatable, CustomStringConvertible {}
-
 public protocol Group {
     
     /// The type of elements in the group. Must conform to `Equatable`

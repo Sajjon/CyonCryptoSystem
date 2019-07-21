@@ -20,8 +20,6 @@ public protocol OrderedSetType: RandomAccessCollection, Equatable where Element:
     mutating func append(_ newElement: Element) -> Bool
 
     func contains(_ member: Element) -> Bool
-//    func containsSameElements(as other: Self) -> Bool
-//    func sorted(by sorting: (Element, Element) throws -> Bool) rethrows -> Self
 }
 
 public extension OrderedSetType {
@@ -40,7 +38,6 @@ public extension OrderedSetType {
 public struct OrderedSet<Element>:
     OrderedSetType,
     ExpressibleByArrayLiteral,
-    RandomAccessCollection,
     CustomStringConvertible
     where
     Element: Hashable

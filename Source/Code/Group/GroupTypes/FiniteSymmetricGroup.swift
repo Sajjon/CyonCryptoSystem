@@ -8,29 +8,25 @@
 
 import Foundation
 
-extension Int: GroupElement {}
-extension Int64: GroupElement {}
-
-extension UInt8: GroupElement {}
-extension UInt: GroupElement {}
-
-extension Array: GroupElement where Element: Equatable {}
-extension Set: GroupElement {}
-extension OrderedSet: GroupElement where Element: Equatable {}
-
-public protocol FiniteSymmetricGroup:
-    FiniteGroup
-where
-Element: OrderedSetType,
-Element.Element == Permutation,
-Permutation.Element == PermutationElement
+// MARK: FiniteSymmetricGroup
+public protocol FiniteSymmetricGroup: FiniteGroup where
+    Element: RandomAccessCollection,
+    Element: OrderedSetInitializable,
+    Element: OrderedSetArrayInitializable,
+    Element: ExpressibleByArrayLiteral,
+    // where
+    Element.Element == Permutation,
+    Element.TypeOfOrderedSet == Permutation,
+    // where
+    Permutation.Element == PermutationElement
 {
     associatedtype PermutationElement: GroupElement
-    associatedtype Permutation: OrderedSetType
+    associatedtype Permutation
     var set: Permutation { get }
     func functionComposition(f: Element, g: Element) -> Element
 }
 
+// MARK: Default
 public extension FiniteSymmetricGroup {
     var order: Int64 {
         return Int64(set.count)
@@ -42,7 +38,7 @@ public extension FiniteSymmetricGroup {
 
     /// The `identity` of a symmetric group of `n` elements, on cycle notation, is just the single cycle (0, 1, 2, ..., `n-1`).
     var identity: Element {
-        return Element(single: set)
+        return Element(orderedSet: set)
     }
 
     func isElementInGroup(_ value: Element) -> Bool {
@@ -64,9 +60,10 @@ public extension FiniteSymmetricGroup {
     ///     (3 2 1 5 4) ∘ (4 5 1 2 3) = (1 2 3 4 5)
     ///
     func inverse(of element: Element) -> Element {
-        return Element(array: element.map { cycle in
-            Permutation(array: cycle.reversed())
-        })
+
+        return Element.init(orderedSetArray: element.map { cycle in
+                    Permutation(array: cycle.reversed())
+                })
     }
 }
 
