@@ -20,6 +20,12 @@ class SymmetricGroupsTest: XCTestCase {
         self.continueAfterFailure = false
     }
 
+    func testElementNoInGroup() {
+        XCTAssertFalse(
+            S5.isElementInGroup(S.Element(single: [1, 2, 3, 4, 5, 6]))
+        )
+    }
+
     func testFunctionCompositionOnOneLineNotation() {
         let f = S.Element(single: [3, 2, 1, 5, 4])
         let g = S.Element(single: [2, 5, 4, 3, 1])
@@ -149,14 +155,98 @@ class SymmetricGroupsTest: XCTestCase {
     }
 
     func testOnOneLineNotation() {
-        // cycle: (1 3)(4 5)(2) <=> (1 3)(4 5)
+        // cycle: (1 3)(4 5)(2) <=> (2)(3 1)(5 4)
         // one-line (3 2 1 5 4)
-        let cycle = S.Element(array: [[1, 3], [4, 5], [2]])
+        let cycle = S.Element(array: [[2], [3, 1], [5, 4]])
+
+        let oneLine = S.Permutation(array: [3, 2, 1, 5, 4])
+
         XCTAssertEqual(
-            S5.toOneLine(from: cycle),
-            S.Permutation(array: [3, 2, 1, 5, 4])
+            S5.toOneLine(from: S.Element(single: oneLine)),
+            oneLine
         )
 
+        XCTAssertEqual(
+            S5.toOneLine(from: cycle),
+            oneLine
+        )
+
+        XCTAssertEqual(
+            S5.toCycleNotation(fromOneLineNotation: oneLine),
+            cycle
+        )
     }
+
+    func testCanonicalCycleNotation() {
+        XCTAssertEqual(
+            S5.toCyclicOnCanonicalForm(element: S.Element(array: [[1, 3], [4, 5], [2]])),
+            S.Element(array: [[2], [3, 1], [5, 4]])
+        )
+    }
+
+    func testRotateArrayEmpty() {
+        XCTAssertEqual(
+            Array<Int>.init().rotatedSoThatLargestElementIsFirst(),
+            Array<Int>.init()
+        )
+    }
+
+    func testRotateArraySingleElement() {
+        XCTAssertEqual(
+            Array<Int>.init([1]).rotatedSoThatLargestElementIsFirst(),
+            Array<Int>.init([1])
+        )
+    }
+
+    func testRotateArrayOfThree() {
+        XCTAssertEqual([1, 2, 3].rotatedSoThatLargestElementIsFirst(), [3, 1, 2])
+    }
+
+    func testRotateArrayOfTen() {
+        XCTAssertEqual(
+            Array(1...10).shiftedRight(by: 1),
+            [10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        )
+        XCTAssertEqual(
+            Array(1...10).rotatedSoThatLargestElementIsFirst(),
+            [10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        )
+        XCTAssertEqual(
+            Array(1...10).rotatedSoThatLargestElementIsFirst(),
+            Array(1...10).shiftedRight(by: 1)
+        )
+    }
+
+    func testShiftArrayOneToTenRightByOne() {
+        XCTAssertEqual(
+            Array(1...10).shiftedLeft(by: 1),
+            [2, 3, 4, 5, 6, 7, 8, 9, 10, 1]
+        )
+
+        XCTAssertNotEqual(
+            Array(1...10).shiftedLeft(by: 1),
+            Array(1...10).shiftedRight(by: 1)
+        )
+    }
+
+    func testShiftArrayOneToTenRightBySeven() {
+        XCTAssertEqual(
+            Array(1...10).shiftedLeft(by: 7),
+            [8, 9, 10, 1, 2, 3, 4, 5, 6, 7]
+        )
+
+        XCTAssertEqual(
+            Array(1...10).shiftedLeft(by: 7),
+            Array(1...10).shiftedRight(by: 3)
+        )
+    }
+
+    func testShiftArrayOneToTenLeftByThree() {
+        XCTAssertEqual(
+            Array(1...10).shiftedRight(by: 8),
+            [3, 4, 5, 6, 7, 8, 9, 10, 1, 2]
+        )
+    }
+
 
 }

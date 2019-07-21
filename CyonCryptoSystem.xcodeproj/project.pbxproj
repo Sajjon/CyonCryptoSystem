@@ -11,6 +11,8 @@
 		482BAF17229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */; };
 		482BAF19229D9BAA0092AB2F /* CyonCryptoSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 482BAF0B229D9BA90092AB2F /* CyonCryptoSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		48512FA722DB468300983578 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48512FA622DB468300983578 /* OrderedSet.swift */; };
+		4858959122E1019700D85E6F /* Collection_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858959022E1019700D85E6F /* Collection_Extension.swift */; };
+		4858959322E101AF00D85E6F /* ZeroOneTwoAndMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4858959222E101AF00D85E6F /* ZeroOneTwoAndMany.swift */; };
 		48A6CBC7229EFFE100696227 /* FiniteSymmetricGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A6CBC6229EFFE100696227 /* FiniteSymmetricGroup.swift */; };
 		48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA08D22DCC11A00ACF289 /* Macros.swift */; };
 		48ABA09122DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */; };
@@ -43,6 +45,8 @@
 		482BAF16229D9BAA0092AB2F /* FiniteCyclicGroupOfIntegersModNTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteCyclicGroupOfIntegersModNTests.swift; sourceTree = "<group>"; };
 		482BAF18229D9BAA0092AB2F /* CyonCryptoSystem-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CyonCryptoSystem-Tests-Info.plist"; sourceTree = "<group>"; };
 		48512FA622DB468300983578 /* OrderedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
+		4858959022E1019700D85E6F /* Collection_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection_Extension.swift; sourceTree = "<group>"; };
+		4858959222E101AF00D85E6F /* ZeroOneTwoAndMany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroOneTwoAndMany.swift; sourceTree = "<group>"; };
 		48A6CBC6229EFFE100696227 /* FiniteSymmetricGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteSymmetricGroup.swift; sourceTree = "<group>"; };
 		48ABA08D22DCC11A00ACF289 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		48ABA09022DCC1DF00ACF289 /* SymmetricGroupOfIntegersOnCyclicNotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricGroupOfIntegersOnCyclicNotation.swift; sourceTree = "<group>"; };
@@ -147,6 +151,15 @@
 			path = OrderedSet;
 			sourceTree = "<group>";
 		};
+		4858958F22E1017F00D85E6F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4858959022E1019700D85E6F /* Collection_Extension.swift */,
+				4858959222E101AF00D85E6F /* ZeroOneTwoAndMany.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		48A6CBC5229EFEFB00696227 /* PermutationGroups */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 		E68BD7FA229E672600FCE4D3 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				4858958F22E1017F00D85E6F /* Extensions */,
 				48512FA422DB466600983578 /* Misc */,
 				E68BD7FE229E898400FCE4D3 /* Group */,
 			);
@@ -341,6 +355,8 @@
 				48ABA08E22DCC11A00ACF289 /* Macros.swift in Sources */,
 				E68BD806229E89D300FCE4D3 /* ModularGroup.swift in Sources */,
 				E68BD7FC229E673A00FCE4D3 /* Group.swift in Sources */,
+				4858959122E1019700D85E6F /* Collection_Extension.swift in Sources */,
+				4858959322E101AF00D85E6F /* ZeroOneTwoAndMany.swift in Sources */,
 				48A6CBC7229EFFE100696227 /* FiniteSymmetricGroup.swift in Sources */,
 				E68BD80F229E8B9C00FCE4D3 /* AnyGroup.swift in Sources */,
 				E68BD80A229E8A0200FCE4D3 /* Integers64ModN.swift in Sources */,

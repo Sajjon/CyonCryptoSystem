@@ -16,6 +16,7 @@ PermutationElement: UnsignedInteger & FixedWidthInteger & GroupElement {
 //    public typealias Element = OrderedSet<Permutation>
 
     public struct Element: OrderedSetType, ExpressibleByArrayLiteral, GroupElement {
+
         public typealias Element = Permutation
         private var underlyingSet: OrderedSet<Permutation>
         public init() {
@@ -30,6 +31,9 @@ PermutationElement: UnsignedInteger & FixedWidthInteger & GroupElement {
     public init(_ size: PermutationElement) {
         set = Permutation(array: .init(PermutationElement(1)...size))
     }
+}
+
+public extension SymmetricGroupOfIntegersOnCyclicNotation {
 
     /// Example from: https://en.wikipedia.org/wiki/Symmetric_group#Multiplication
     /// two-line notation:
@@ -49,28 +53,60 @@ PermutationElement: UnsignedInteger & FixedWidthInteger & GroupElement {
     ///      f ∘ g = f(g(x)):
     ///          (1 3)(4 5) ∘ (1 2 5)(3 4) = (1 2 4)(3 5)
     ///
-    public func functionComposition(
+    func functionComposition(
         f fOnCycleNotation: Element,
         g gOnCycleNotation: Element
     ) -> Element {
-
-        print("f cyc: \(fOnCycleNotation)")
-        print("g cyc: \(gOnCycleNotation)")
         let f = toOneLine(from: fOnCycleNotation)
         let g = toOneLine(from: gOnCycleNotation)
-        print("f: \(f)")
-        print("g: \(g)")
-        var product = Permutation()
+        let fog = functionCompositionUsingOneLineNotation(f: f, g: g)
+        return Element(single: fog)
+    }
 
-        func toIndex(_ permutationElement: PermutationElement, shouldSubtractOneBecauseOfZeroIndexing: Bool = true) -> Permutation.Index {
-            guard var index = Permutation.Index(exactly: permutationElement) else {
-                fatalError("should be able to create \(Permutation.Index.self) from PermutationElement(\(permutationElement))")
+    /// Transforms the provided  symetric group element on One-Line-Notation into Cycle Notation[1]
+    ///
+    /// **From:**
+    ///
+    ///     one-line notation:
+    ///         (3 2 1 5 4)
+    ///
+    /// **Implicitly into:**
+    ///
+    ///     two-line notation:
+    ///         (1 2 3 4 5)
+    ///         (3 2 1 5 4)
+    ///
+    /// **Transformed to:**
+    ///
+    ///     cycle notation:
+    ///         (1 3)(4 5)(2)
+    ///
+    /// [1]: https://en.wikipedia.org/wiki/Permutation#Cycle_notation
+    func toCycleNotation(fromOneLineNotation permutation: Permutation) -> Element {
+        var onCycleNotation = Element()
+        for permutationElement in permutation {
+            guard !onCycleNotation.contains(permutationElement: permutationElement) else { continue }
+            var currentCycle: Permutation! = .init(single: permutationElement)
+            while currentCycle != nil {
+                let nextIndex = toIndex(permutationElement)
+                let nextElement = permutation[nextIndex]
+                if currentCycle.contains(nextElement) {
+                    // close cycle and continue with next
+                    onCycleNotation.append(currentCycle)
+                    currentCycle = nil
+                } else {
+                    currentCycle.append(nextElement)
+                }
             }
-            if shouldSubtractOneBecauseOfZeroIndexing {
-                index -= 1
-            }
-            return index
         }
+        return toCyclicOnCanonicalForm(element: onCycleNotation)
+    }
+
+    func functionCompositionUsingOneLineNotation(
+        f: Permutation,
+        g: Permutation
+    ) -> Permutation {
+        var product = Permutation()
 
         for setElement in set {
             let indexInFOneIndexed = g[toIndex(setElement)]
@@ -80,7 +116,7 @@ PermutationElement: UnsignedInteger & FixedWidthInteger & GroupElement {
             product.append(elementInF)
         }
 
-        return Element(single: product)
+        return product
     }
 
     /// Returns this symetric group on [One-Line notation][1]
@@ -134,17 +170,29 @@ PermutationElement: UnsignedInteger & FixedWidthInteger & GroupElement {
     ///     `(3 1 2)(5 4)(8)(9 7 6)`
     ///
     /// [1]: https://en.wikipedia.org/wiki/Permutation#Canonical_cycle_notation_(a.k.a._standard_form)
-    static func toCyclicOnCanonicalForm(from element: Element) -> Element {
-//        return Element(array:
-//            element.map { cycle in
-//                assert(!cycle.isEmpty)
-//                return cycle.sorted(by: { $0 > $1 })
-//            }.sorted(by: { $0.first! < $1.first! })
-//        )
-        implementMe
+    func toCyclicOnCanonicalForm(element: Element) -> Element {
+        return Element(array:
+            element.map { cycle in
+                assert(!cycle.isEmpty)
+                return Permutation(array: cycle.rotatedSoThatLargestElementIsFirst())
+            }.sorted(by: { $0.first! < $1.first! })
+        )
     }
 }
 
+private extension SymmetricGroupOfIntegersOnCyclicNotation {
+    func toIndex(_ permutationElement: PermutationElement, shouldSubtractOneBecauseOfZeroIndexing: Bool = true) -> Permutation.Index {
+        guard var index = Permutation.Index(exactly: permutationElement) else {
+            fatalError("should be able to create \(Permutation.Index.self) from PermutationElement(\(permutationElement))")
+        }
+        if shouldSubtractOneBecauseOfZeroIndexing {
+            index -= 1
+        }
+        return index
+    }
+}
+
+// MARK: Element
 public extension SymmetricGroupOfIntegersOnCyclicNotation.Element {
     init(array: [Element]) {
         self.init()
@@ -170,6 +218,13 @@ public extension SymmetricGroupOfIntegersOnCyclicNotation.Element {
         return underlyingSet.append(newElement)
     }
 
+//    func contains(permutationElement: Element.Element) -> Bool {
+//        return underlyingSet.contents.first(where: { $0.contains(permutationElement) })?.isEmpty == false
+//    }
+
+    func contains(_ member: Element) -> Bool {
+        return underlyingSet.contains(member)
+    }
 
     // MARK: RandomAccessCollection
     var startIndex: Int { return underlyingSet.startIndex }
@@ -182,59 +237,66 @@ public extension SymmetricGroupOfIntegersOnCyclicNotation.Element {
     var description: String {
         return underlyingSet.description
     }
-}
 
-public extension SymmetricGroupOfIntegersOnCyclicNotation {
-    enum Notation {
-        case oneLine(Permutation)
-        case cycle(Element)
+    var contents: [Element] {
+        return underlyingSet.contents
     }
 }
 
-public extension Collection {
+public extension RandomAccessCollection
+    where
+    Element: Comparable,
+    Self.Index == Int
+{
 
-    var countedElementsZeroOneTwoAndMany: ZeroOneTwoAndMany<Element> {
-        if isEmpty {
-            return .zero
-        } else {
-            let firstElement = first!
-            if count == 1 {
-                return .one(single: firstElement)
+    func rotatedSoThatLargestElementIsFirst() -> [Element] {
+        switch countedElementsZeroOneTwoAndMany {
+        case .zero: return []
+        case .one(let single): return [single]
+        case .two(let a, let b): return [Swift.max(a, b), Swift.min(a, b)]
+        case .many:
+            let indexOfMax = firstIndex(of: self.max()!)!
+            if indexOfMax < count/2 {
+                return shiftedLeft(by: indexOfMax)
             } else {
-                let second = self.dropFirst().first!
-                if count == 2 {
-                    return .two(first: firstElement, secondAndLast: second)
-                } else {
-                    let last = self.suffix(1).first!
-                    return .many(first: firstElement, second: second, last: last)
-                }
+                return shiftedRight(by: indexOfMax.distance(to: self.endIndex))
             }
-
         }
     }
-
-    func slidingWindow(length: Int) -> AnyRandomAccessCollection<SubSequence> {
-        guard !isEmpty, length > 1, length <= count else { return AnyRandomAccessCollection([]) }
-
-        let windows = sequence(first: (startIndex, index(startIndex, offsetBy: length)),
-                               next: { (start, end) in
-                                guard end != self.endIndex else { return nil }
-                                let nextStart = self.index(after: start)
-                                let nextEnd = self.index(after: end)
-                                return (nextStart, nextEnd)
-        })
-
-        return AnyRandomAccessCollection(
-            windows.lazy.map{ (start, end) in
-                self[start..<end]
-            }
-        )
-    }
 }
 
-public enum ZeroOneTwoAndMany<Element> {
-    case zero
-    case one(single: Element)
-    case two(first: Element, secondAndLast: Element)
-    case many(first: Element, second: Element, last: Element)
+public extension RandomAccessCollection where
+    Self.Index == Int {
+
+    /// [1...10].shiftedLeft(by: 1) => [2, 3, 4, 5, 6, 7, 8, 9, 10, 1]
+    /// [1...10].shiftedLeft(by: 7) => [8, 9, 10, 1, 2, 3, 4, 5, 6, 7]
+    func shiftedLeft(by rawOffset: Int = 1) -> [Element] {
+        let clampedAmount = rawOffset % count
+        let offset = clampedAmount < 0 ? count + clampedAmount : clampedAmount
+        return Array(self[offset ..< count]) + Array(self[0 ..< offset])
+    }
+
+
+    func shiftedRight(by rawOffset: Int = 1) -> [Element] {
+        return self.shiftedLeft(by: -rawOffset)
+    }
+
+    static func << (c: Self, offset: Int) -> [Element] { c.shiftedLeft(by: offset) }
+    static func >> (c: Self, offset: Int) -> [Element] { c.shiftedRight(by: offset) }
+}
+
+public extension RandomAccessCollection where
+    Self: RangeReplaceableCollection,
+    Self.Index == Int {
+
+    mutating func shiftLeft(by rawOffset: Int = 1) {
+        self = Self.init(shiftedLeft(by: rawOffset))
+    }
+
+    mutating func shiftRight(by rawOffset: Int = 1) {
+        self = Self.init(self.shiftedRight(by: rawOffset))
+    }
+
+    static func <<= (c: inout Self, offset: Int) { c.shiftLeft(by: offset) }
+    static func >>= (c: inout Self, offset: Int) { c.shiftRight(by: offset) }
 }

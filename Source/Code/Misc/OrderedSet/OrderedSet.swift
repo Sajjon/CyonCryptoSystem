@@ -14,8 +14,12 @@ public protocol OrderedSetType: RandomAccessCollection, Equatable where Element:
     init(set: Set<Element>)
     init(single: Element)
 
+    /// Returns the contents of the set as an array.
+    var contents: [Element] { get }
+
     mutating func append(_ newElement: Element) -> Bool
 
+    func contains(_ member: Element) -> Bool
 //    func containsSameElements(as other: Self) -> Bool
 //    func sorted(by sorting: (Element, Element) throws -> Bool) rethrows -> Self
 }
@@ -83,6 +87,12 @@ public extension OrderedSet {
 
 // MARK: OrderedSetType
 public extension OrderedSet {
+
+
+    func contains(_ member: Element) -> Bool {
+        return set.contains(member)
+    }
+
 //    func containsSameElements(as other: OrderedSet<Element>) -> Bool {
 //        return self.set == other.set
 //    }
@@ -181,3 +191,12 @@ public func == <T>(lhs: OrderedSet<T>, rhs: OrderedSet<T>) -> Bool {
 
 // MARK: OrderedSet + Hashable
 extension OrderedSet: Hashable where Element: Hashable { }
+
+// MARK: OrderSet Contains
+public extension OrderedSetType where Element: OrderedSetType {
+    func contains(permutationElement: Element.Element) -> Bool {
+        return contents.first(where: { $0.contains(permutationElement) })?.isEmpty == false
+    }
+
+}
+
