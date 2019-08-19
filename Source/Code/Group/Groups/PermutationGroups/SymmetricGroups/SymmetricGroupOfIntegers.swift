@@ -17,7 +17,7 @@ public struct SymmetricGroupOfIntegers: FiniteSymmetricGroup {
     public let set: Permutation
 
     /// The `size` of this finite symmetric group is equivalent to its `order`.
-    public init(_ size: PermutationElement) {
+    public init(oneThrough size: PermutationElement) {
         set = Permutation(array: .init(PermutationElement(1)...size))
     }
 }

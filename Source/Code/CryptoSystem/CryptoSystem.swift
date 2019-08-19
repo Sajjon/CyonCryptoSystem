@@ -25,15 +25,23 @@ public protocol Signature {
 }
 public protocol SignatureScheme {}
 
-public protocol CryptoSystem {
-    associatedtype GroupUsed: Group
-
+public protocol KeyGenerating {
     func generateKeyPair() -> KeyPair
-    func sign(message: Message, withKey: PrivateKey, scheme: SignatureScheme) -> Signature
+}
 
+public protocol MessageSigning {
+    func sign(message: Message, withKey: PrivateKey, scheme: SignatureScheme) -> Signature
+}
+
+public protocol SignatureVerifying {
     func verifyThat(
         publicKey: PublicKey,
         signingMessage message: Message,
         indeedResultsInSignature signature: Signature
     ) -> Bool
 }
+
+public protocol CryptoSystem: KeyGenerating, MessageSigning, SignatureVerifying {
+    associatedtype GroupUsed: Group
+}
+

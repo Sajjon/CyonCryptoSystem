@@ -13,7 +13,7 @@ private typealias S = SymmetricGroupOfIntegers
 
 class SymmetricGroupsTest: XCTestCase {
 
-    private let S5 = S(5)
+    private let S5 = S(oneThrough: 5)
 
     override func setUp() {
         super.setUp()
