@@ -1,3 +1,6 @@
+# ARCHIVED
+Moved over code to [AbstractAlgebra SPM package](https://github.com/Sajjon/AbstractAlgebra)
+
 # Introduction
 I got some idea of building a new crypto-system based on [Permutation Groups](https://en.wikipedia.org/wiki/Permutation_group), e.g. [`S₄`](https://en.wikiversity.org/wiki/Symmetric_group_S4), where 4 denotes the max integer in the group, yielding numbers in the `S = {1, 2, 3, 4}`.
 
